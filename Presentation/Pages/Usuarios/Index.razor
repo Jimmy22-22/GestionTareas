@@ -1,14 +1,16 @@
 ﻿@page "/usuarios"
 @inject UsuarioService UsuarioService
 
-<h3 class="titulo"><i class="bi bi-people-fill"></i> Lista de Usuarios</h3>
+<h3 class="titulo">
+    <i class="bi bi-people-fill icono-titulo"></i> Lista de Usuarios
+</h3>
 
-<a class="btn btn-success mb-3" href="/usuarios/create">
-    <i class="bi bi-plus-circle-fill"></i> Nuevo Usuario
+<a class="btn-nueva-entidad mb-3" href="/usuarios/create">
+    <i class="bi bi-plus-circle-fill icono-boton"></i> Nuevo Usuario
 </a>
 
-<table class="table table-hover table-striped table-bordered">
-    <thead class="table-dark">
+<table class="tabla-entidades">
+    <thead>
         <tr>
             <th>Nombre</th>
             <th>Correo</th>
@@ -18,7 +20,7 @@
     <tbody>
         @foreach (var u in listaUsuarios)
         {
-            <tr>
+            <tr class="fila-entidad">
                 <td>@u.Nombre</td>
                 <td>@u.Correo</td>
                 <td>
@@ -36,6 +38,92 @@
         }
     </tbody>
 </table>
+
+<style>
+    .titulo {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    .icono-titulo {
+        color: #4caf50;
+        margin-right: 0.5rem;
+    }
+
+    .btn-nueva-entidad {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: #4caf50;
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+        .btn-nueva-entidad:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+    .icono-boton {
+        margin-right: 0.5rem;
+    }
+
+    .tabla-entidades {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-bottom: 2rem;
+    }
+
+        .tabla-entidades thead {
+            background-color: #4caf50;
+            color: #fff;
+            text-align: left;
+        }
+
+        .tabla-entidades th {
+            padding: 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .tabla-entidades tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+            .tabla-entidades tbody tr:hover {
+                background-color: #f0f8ff;
+            }
+
+        .tabla-entidades td {
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+    .btn-info,
+    .btn-warning,
+    .btn-danger {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+    }
+
+        .btn-info:hover,
+        .btn-warning:hover,
+        .btn-danger:hover {
+            transform: scale(1.1);
+        }
+</style>
 
 @code {
     private List<Usuario> listaUsuarios = new();

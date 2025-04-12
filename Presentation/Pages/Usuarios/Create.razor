@@ -2,25 +2,94 @@
 @inject UsuarioService UsuarioService
 @inject NavigationManager Navigation
 
-<h3><i class="bi bi-plus-circle-fill"></i> Nuevo Usuario</h3>
+<h3 class="titulo-formulario">
+    <i class="bi bi-plus-circle-fill icono-titulo"></i> Nuevo Usuario
+</h3>
 
-<EditForm Model="nuevoUsuario" OnValidSubmit="CrearUsuario">
+<EditForm Model="nuevoUsuario" OnValidSubmit="CrearUsuario" class="formulario-nueva-entidad">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
     <div class="form-group">
-        <label>Nombre:</label>
-        <InputText class="form-control" @bind-Value="nuevoUsuario.Nombre" />
+        <label class="etiqueta">Nombre:</label>
+        <InputText class="input-text form-control" @bind-Value="nuevoUsuario.Nombre" placeholder="Escribe el nombre del usuario..." />
     </div>
     <div class="form-group">
-        <label>Correo:</label>
-        <InputText class="form-control" @bind-Value="nuevoUsuario.Correo" />
+        <label class="etiqueta">Correo:</label>
+        <InputText class="input-text form-control" @bind-Value="nuevoUsuario.Correo" placeholder="Escribe el correo del usuario..." />
     </div>
 
-    <button class="btn btn-success mt-2">
-        <i class="bi bi-check-circle-fill"></i> Crear
+    <button class="btn-crear mt-3" type="submit">
+        <i class="bi bi-check-circle-fill icono-boton"></i> Crear Usuario
     </button>
 </EditForm>
+
+<style>
+    .formulario-nueva-entidad {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .titulo-formulario {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    .icono-titulo {
+        color: #4caf50;
+        margin-right: 0.5rem;
+    }
+
+    .etiqueta {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .input-text {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease;
+    }
+
+        .input-text:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+
+    .btn-crear {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #4caf50;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-crear:hover {
+            background-color: #45a049;
+        }
+
+    .icono-boton {
+        margin-right: 0.5rem;
+    }
+</style>
 
 @code {
     private Usuario nuevoUsuario = new();
