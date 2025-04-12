@@ -1,0 +1,36 @@
+﻿@page "/usuarios/read/{Id:int}"
+@inject UsuarioService UsuarioService
+@inject NavigationManager Navigation
+
+<h3><i class="bi bi-eye-fill"></i> Detalles del Usuario</h3>
+
+@if (usuario != null)
+{
+    <div class="card p-3 shadow-sm">
+        <h5 class="card-title"><i class="bi bi-person-fill"></i> @usuario.Nombre</h5>
+        <p class="card-text"><strong>Correo:</strong> @usuario.Correo</p>
+
+        <div class="mt-3">
+            <a href="/usuarios" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver
+            </a>
+            <a class="btn btn-primary ms-2" href="/usuarios/edit/@usuario.Id">
+                <i class="bi bi-pencil"></i> Editar
+            </a>
+        </div>
+    </div>
+}
+else
+{
+    <p>Cargando usuario...</p>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private Usuario? usuario;
+
+    protected override async Task OnInitializedAsync()
+    {
+        usuario = await UsuarioService.ObtenerPorId(Id);
+    }
+}

@@ -1,0 +1,47 @@
+﻿@page "/usuarios"
+@inject UsuarioService UsuarioService
+
+<h3 class="titulo"><i class="bi bi-people-fill"></i> Lista de Usuarios</h3>
+
+<a class="btn btn-success mb-3" href="/usuarios/create">
+    <i class="bi bi-plus-circle-fill"></i> Nuevo Usuario
+</a>
+
+<table class="table table-hover table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in listaUsuarios)
+        {
+            <tr>
+                <td>@u.Nombre</td>
+                <td>@u.Correo</td>
+                <td>
+                    <a class="btn btn-info btn-sm me-1" href="/usuarios/read/@u.Id">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm me-1" href="/usuarios/edit/@u.Id">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="/usuarios/delete/@u.Id">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Usuario> listaUsuarios = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaUsuarios = await UsuarioService.ObtenerTodos();
+    }
+}

@@ -1,0 +1,65 @@
+﻿@page "/tareas/edit/{Id:int}"
+@inject TareaService TareaService
+@inject UsuarioService UsuarioService
+@inject NavigationManager Navigation
+
+<h3><i class="bi bi-pencil-square"></i> Editar Tarea</h3>
+
+@if (tarea != null)
+{
+    <EditForm Model="tarea" OnValidSubmit="Guardar">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label>Título:</label>
+            <InputText class="form-control" @bind-Value="tarea.Titulo" />
+        </div>
+        <div class="form-group">
+            <label>Descripción:</label>
+            <InputText class="form-control" @bind-Value="tarea.Descripcion" />
+        </div>
+        <div class="form-group">
+            <label>Fecha Límite:</label>
+            <InputDate class="form-control" @bind-Value="tarea.FechaLimite" TValue="DateTime" />
+        </div>
+        <div class="form-group">
+            <label>Usuario:</label>
+            <InputSelect class="form-select" @bind-Value="tarea.UsuarioId" TValue="int">
+                @foreach (var u in usuarios)
+                {
+                    <option value="@u.Id">@u.Nombre</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-check mt-2">
+            <InputCheckbox class="form-check-input" @bind-Value="tarea.Completada" TValue="bool" />
+            <label class="form-check-label ms-2">Completada</label>
+        </div>
+
+        <button class="btn btn-primary mt-3"><i class="bi bi-save"></i> Guardar</button>
+    </EditForm>
+}
+else
+{
+    <p>Cargando...</p>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private Tarea? tarea;
+    private List<Usuario> usuarios = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        tarea = await TareaService.ObtenerPorId(Id);
+        usuarios = await UsuarioService.ObtenerTodos();
+    }
+
+    private async Task Guardar()
+    {
+        await TareaService.Editar(tarea!);
+        Navigation.NavigateTo("/");
+    }
+}

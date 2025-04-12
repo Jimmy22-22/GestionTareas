@@ -1,0 +1,51 @@
+﻿@page "/"
+@inject TareaService TareaService
+
+<h3 class="titulo"><i class="bi bi-card-list"></i> Lista de Tareas</h3>
+
+<a class="btn btn-success mb-3" href="/tareas/create">
+    <i class="bi bi-plus-circle-fill"></i> Nueva Tarea
+</a>
+
+<table class="table table-hover table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Título</th>
+            <th>Usuario</th>
+            <th>Fecha Límite</th>
+            <th>Completada</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in listaTareas)
+        {
+            <tr>
+                <td>@t.Titulo</td>
+                <td>@t.Usuario?.Nombre</td>
+                <td>@t.FechaLimite.ToShortDateString()</td>
+                <td>@(t.Completada ? "✅" : "❌")</td>
+                <td>
+                    <a class="btn btn-info btn-sm me-1" href="/tareas/read/@t.Id">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm me-1" href="/tareas/edit/@t.Id">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="/tareas/delete/@t.Id">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Tarea> listaTareas = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaTareas = await TareaService.ObtenerTodas();
+    }
+}

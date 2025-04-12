@@ -1,0 +1,30 @@
+﻿@page "/usuarios/delete/{Id:int}"
+@inject UsuarioService UsuarioService
+@inject NavigationManager Navigation
+
+<h3 class="text-danger"><i class="bi bi-trash3-fill"></i> Eliminar Usuario</h3>
+
+<p>¿Estás seguro que deseas eliminar este usuario?</p>
+
+<button class="btn btn-danger me-2" @onclick="Eliminar">
+    <i class="bi bi-trash-fill"></i> Sí, eliminar
+</button>
+
+<button class="btn btn-secondary" @onclick="Cancelar">
+    <i class="bi bi-x-circle"></i> Cancelar
+</button>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private async Task Eliminar()
+    {
+        await UsuarioService.Eliminar(Id);
+        Navigation.NavigateTo("/usuarios");
+    }
+
+    private void Cancelar()
+    {
+        Navigation.NavigateTo("/usuarios");
+    }
+}
