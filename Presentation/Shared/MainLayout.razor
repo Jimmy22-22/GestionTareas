@@ -9,14 +9,15 @@
 
     <footer class="bottom-nav">
         <NavLink class="nav-link" href="/usuarios">
-            <i class="bi bi-people-fill"></i><span>Usuarios</span>
+            <i class="bi bi-people-fill icono-nav"></i><span>Usuarios</span>
         </NavLink>
 
         <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
-            <i class="bi bi-check2-square"></i><span>Tareas</span>
+            <i class="bi bi-check2-square icono-nav"></i><span>Tareas</span>
         </NavLink>
+
         <NavLink class="nav-link" href="https://github.com/Jimmy22-22/GestionTareas.git" target="_blank">
-            <i class="fab fa-github"></i><span>GitHub</span>
+            <i class="fab fa-github icono-nav"></i><span>GitHub</span>
         </NavLink>
     </footer>
 </div>
@@ -27,58 +28,49 @@
         flex-direction: column;
         height: 100vh;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f2f4f8;
+        background-color: #e8f5e9;
     }
 
     .body-content {
         flex-grow: 1;
         padding: 2rem;
         overflow-y: auto;
+        background-color: #ffffff;
+        border-radius: 15px;
+        margin: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
     }
 
     .bottom-nav {
         display: flex;
         justify-content: space-around;
-        background-color: #2d3436;
+        background-color: #4caf50;
         padding: 10px 0;
-        border-top: 2px solid #636e72;
+        border-top: 2px solid #388e3c;
     }
 
-        .bottom-nav .nav-link {
-            color: #dfe6e9;
-            text-decoration: none;
-            text-align: center;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-            .bottom-nav .nav-link:hover,
-            .bottom-nav .nav-link.active {
-                color: #00cec9;
-            }
-
-            .bottom-nav .nav-link i {
-                font-size: 1.3rem;
-                margin-bottom: 4px;
-            }
-
-    @@media (max-width: 768px) {
-        .body-content
-
-    {
-        padding: 1rem;
+    .bottom-nav .nav-link {
+        color: #f1f8e9;
+        text-decoration: none;
+        text-align: center;
+        font-size: 0.95rem;
+        transition: color 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+        border-radius: 8px;
     }
 
-    .bottom-nav {
-        font-size: 0.9rem;
+    .bottom-nav .nav-link:hover,
+    .bottom-nav .nav-link.active {
+        color: #c8e6c9; 
+        box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
     }
 
-        .bottom-nav .nav-link i {
-            font-size: 1.1rem;
-        }
-
+    .bottom-nav .nav-link i.icono-nav {
+        font-size: 1.5rem;
+        margin-bottom: 4px;
+    }
     }
 </style>
