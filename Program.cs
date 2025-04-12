@@ -2,13 +2,14 @@
 using GestionTareas.Domain.Interfaces;
 using GestionTareas.Infrastructure.Data;
 using GestionTareas.Infrastructure.Repositories;
+using ElectronNET.API;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestionTareas
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,8 @@ namespace GestionTareas
             builder.Services.AddScoped<TareaService>();
             builder.Services.AddScoped<ProyectoService>();
 
+            builder.WebHost.UseElectron(args);
+
             var app = builder.Build();
 
             if (!app.Environment.IsDevelopment())
@@ -42,10 +45,30 @@ namespace GestionTareas
             app.UseRouting();
 
             app.MapBlazorHub();
-
             app.MapFallbackToPage("/_Host");
 
+            if (HybridSupport.IsElectronActive)
+            {
+                await ElectronBootstrapAsync();
+            }
+
             app.Run();
+        }
+
+        private static async Task ElectronBootstrapAsync()
+        {
+            var window = await Electron.WindowManager.CreateWindowAsync(new ElectronNET.API.Entities.BrowserWindowOptions
+            {
+                Width = 1200,
+                Height = 800,
+                Show = true,
+                Frame = true,
+                Title = "GestionTareas - Escritorio",
+                AutoHideMenuBar = true
+            });
+
+            window.SetMenuBarVisibility(false);
+            window.OnClosed += () => Electron.App.Exit();
         }
     }
 }
