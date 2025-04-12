@@ -1,0 +1,30 @@
+﻿@page "/proyectos/delete/{Id:int}"
+@inject ProyectoService ProyectoService
+@inject NavigationManager Navigation
+
+<h3 class="text-danger"><i class="bi bi-trash3-fill"></i> Eliminar Proyecto</h3>
+
+<p>¿Estás seguro que deseas eliminar este proyecto?</p>
+
+<button class="btn btn-danger me-2" @onclick="Eliminar">
+    <i class="bi bi-trash-fill"></i> Sí, eliminar
+</button>
+
+<button class="btn btn-secondary" @onclick="Cancelar">
+    <i class="bi bi-x-circle"></i> Cancelar
+</button>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private async Task Eliminar()
+    {
+        await ProyectoService.Eliminar(Id);
+        Navigation.NavigateTo("/proyectos");
+    }
+
+    private void Cancelar()
+    {
+        Navigation.NavigateTo("/proyectos");
+    }
+}

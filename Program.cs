@@ -24,8 +24,10 @@ namespace GestionTareas
 
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             builder.Services.AddScoped<ITareaRepository, TareaRepository>();
+            builder.Services.AddScoped<IProyectoRepository, ProyectoRepository>();
             builder.Services.AddScoped<UsuarioService>();
             builder.Services.AddScoped<TareaService>();
+            builder.Services.AddScoped<ProyectoService>();
 
             var app = builder.Build();
 

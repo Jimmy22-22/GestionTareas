@@ -1,0 +1,56 @@
+﻿@page "/proyectos"
+@inject ProyectoService ProyectoService
+
+<h3 class="titulo"><i class="bi bi-card-list"></i> Lista de Proyectos</h3>
+
+<a class="btn btn-success mb-3" href="/proyectos/create">
+    <i class="bi bi-plus-circle-fill"></i> Nuevo Proyecto
+</a>
+
+<table class="table table-hover table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Responsable</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in listaProyectos)
+        {
+            <tr>
+                <td>@p.Nombre</td>
+                <td>@p.Descripcion</td>
+                <td>@p.FechaInicio.ToShortDateString()</td>
+                <td>@(p.FechaFin.HasValue ? p.FechaFin.Value.ToShortDateString() : "No definida")</td>
+                <td>@p.Usuario?.Nombre</td>
+                <td>
+                    <a class="btn btn-info btn-sm me-1" href="/proyectos/read/@p.Id">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm me-1" href="/proyectos/edit/@p.Id">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="/proyectos/delete/@p.Id">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@code {
+    private List<Proyecto> listaProyectos = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaProyectos = await ProyectoService.ObtenerTodos();
+    }
+}
+

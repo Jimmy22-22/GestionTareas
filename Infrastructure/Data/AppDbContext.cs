@@ -10,5 +10,6 @@ namespace GestionTareas.Infrastructure.Data
 
         public DbSet<Usuario> Usuarios => Set<Usuario>();
         public DbSet<Tarea> Tareas => Set<Tarea>();
+        public DbSet<Proyecto> Proyectos => Set<Proyecto>();
     }
 }

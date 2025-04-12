@@ -1,0 +1,51 @@
+﻿@page "/proyectos/read/{Id:int}"
+@inject ProyectoService ProyectoService
+@inject NavigationManager Navigation
+
+<h3><i class="bi bi-eye-fill"></i> Detalles de Proyecto</h3>
+
+@if (proyecto != null)
+{
+    <div class="card p-3 shadow-sm">
+        <h5 class="card-title"><i class="bi bi-folder2-open"></i> @proyecto.Nombre</h5>
+
+        <p class="card-text">
+            <strong>Descripción:</strong> @proyecto.Descripcion
+        </p>
+
+        <p class="card-text">
+            <strong>Fecha de Inicio:</strong> @proyecto.FechaInicio.ToString("dd/MM/yyyy")
+        </p>
+
+        <p class="card-text">
+            <strong>Fecha de Fin:</strong> @(proyecto.FechaFin.HasValue ? proyecto.FechaFin.Value.ToString("dd/MM/yyyy") : "Sin definir")
+        </p>
+
+        <p class="card-text">
+            <strong>Usuario Asignado:</strong> @proyecto.Usuario?.Nombre
+        </p>
+
+        <div class="mt-3">
+            <a href="/proyectos" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver
+            </a>
+            <a class="btn btn-primary ms-2" href="/proyectos/edit/@proyecto.Id">
+                <i class="bi bi-pencil-square"></i> Editar
+            </a>
+        </div>
+    </div>
+}
+else
+{
+    <p>Cargando proyecto...</p>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private Proyecto? proyecto;
+
+    protected override async Task OnInitializedAsync()
+    {
+        proyecto = await ProyectoService.ObtenerPorId(Id);
+    }
+}
