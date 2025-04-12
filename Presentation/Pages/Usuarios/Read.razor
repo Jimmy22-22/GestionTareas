@@ -9,7 +9,9 @@
 @if (usuario != null)
 {
     <div class="tarjeta-detalles p-4 shadow-sm">
-        <h5 class="titulo-tarjeta"><i class="bi bi-person-fill icono-titulo-tarjeta"></i> @usuario.Nombre</h5>
+        <h5 class="titulo-tarjeta">
+            <i class="bi bi-person-fill icono-titulo-tarjeta"></i> @usuario.Nombre
+        </h5>
         <p class="texto-detalles"><strong>Correo:</strong> @usuario.Correo</p>
 
         <div class="botones-accion mt-3">
@@ -24,86 +26,92 @@
 }
 else
 {
-    <p class="mensaje-cargando">Cargando usuario...</p>
+    <p class="mensaje-cargando">
+        <i class="bi bi-hourglass-split"></i> Cargando usuario...
+    </p>
 }
 
 <style>
     .titulo-detalles {
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: bold;
-        color: #333;
+        color: #6c63ff;
         margin-bottom: 1.5rem;
     }
 
     .icono-titulo {
-        color: #0d6efd;
+        color: #6c63ff;
         margin-right: 0.5rem;
     }
 
     .tarjeta-detalles {
         max-width: 500px;
         margin: 0 auto;
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+        background: #171515;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #f0f0f0;
     }
 
     .titulo-tarjeta {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: bold;
-        color: #333;
+        color: #ffffff;
         margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
     }
 
     .icono-titulo-tarjeta {
-        color: #0d6efd; 
+        color: #6c63ff;
         margin-right: 0.5rem;
+        font-size: 1.4rem;
     }
 
     .texto-detalles {
-        font-size: 0.9rem;
-        color: #555;
+        font-size: 0.95rem;
+        color: #cccccc;
         margin-bottom: 0.75rem;
     }
 
     .botones-accion {
         display: flex;
-        gap: 1rem; 
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+
+    .btn-volver, .btn-editar {
+        padding: 0.65rem 1.2rem;
+        font-size: 0.95rem;
+        font-weight: bold;
+        border-radius: 8px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
     }
 
     .btn-volver {
-        padding: 0.75rem 1.5rem;
-        background-color: #6c757d; 
-        color: #fff;
-        font-size: 1rem;
-        font-weight: bold;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+        background-color: #6c757d;
     }
 
-    .btn-volver:hover {
-        background-color: #5a6268; 
-    }
+        .btn-volver:hover {
+            background-color: #5a6268;
+        }
 
     .btn-editar {
-        padding: 0.75rem 1.5rem;
-        background-color: #0d6efd; 
-        color: #fff;
-        font-size: 1rem;
-        font-weight: bold;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+        background-color: #6c63ff;
     }
 
-    .btn-editar:hover {
-        background-color: #0b5ed7;
-    }
+        .btn-editar:hover {
+            background-color: #574fd6;
+        }
 
     .icono-boton {
         margin-right: 0.5rem;
@@ -112,7 +120,8 @@ else
     .mensaje-cargando {
         text-align: center;
         font-size: 1rem;
-        color: #555;
+        color: #aaaaaa;
+        margin-top: 2rem;
     }
 </style>
 

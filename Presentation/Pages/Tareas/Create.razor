@@ -44,28 +44,28 @@
         max-width: 500px;
         margin: 0 auto;
         padding: 2rem;
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+        background: #1c1c1c;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .titulo-formulario {
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: bold;
-        color: #333;
+        color: #f1f1f1;
         margin-bottom: 1.5rem;
     }
 
     .icono-titulo {
-        color: #4caf50;
+        color: #6c63ff;
         margin-right: 0.5rem;
     }
 
     .etiqueta {
-        font-size: 0.9rem;
-        color: #555;
+        font-size: 0.95rem;
+        color: #cccccc;
         margin-bottom: 0.5rem;
         display: block;
     }
@@ -75,23 +75,25 @@
     .input-select {
         width: 100%;
         padding: 0.75rem;
-        border: 1px solid #ddd;
+        border: 1px solid #444;
         border-radius: 8px;
         font-size: 0.9rem;
+        background-color: #2a2a2a;
+        color: #f1f1f1;
         transition: border-color 0.3s ease;
     }
 
         .input-text:focus,
         .input-date:focus,
         .input-select:focus {
-            border-color: #4caf50;
+            border-color: #6c63ff;
             outline: none;
         }
 
     .btn-crear {
         width: 100%;
         padding: 0.75rem;
-        background-color: #4caf50;
+        background-color: #6c63ff;
         color: #fff;
         font-size: 1rem;
         font-weight: bold;
@@ -102,14 +104,13 @@
     }
 
         .btn-crear:hover {
-            background-color: #45a049;
+            background-color: #574fd6;
         }
 
     .icono-boton {
         margin-right: 0.5rem;
     }
 </style>
-
 
 @code {
     private Tarea nuevaTarea = new();

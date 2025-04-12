@@ -6,7 +6,9 @@
     <i class="bi bi-trash3-fill icono-titulo"></i> Eliminar Tarea
 </h3>
 
-<p class="mensaje-confirmacion">¿Estás seguro que deseas eliminar esta tarea?</p>
+<p class="mensaje-confirmacion">
+    ¿Estás seguro que deseas eliminar esta tarea?
+</p>
 
 <div class="botones-accion">
     <button class="btn-eliminar me-2" @onclick="Eliminar">
@@ -21,13 +23,14 @@
 <style>
     .titulo-eliminar {
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: bold;
         color: #dc3545;
         margin-bottom: 1.5rem;
     }
 
     .icono-titulo {
+        color: #dc3545;
         margin-right: 0.5rem;
     }
 
@@ -36,6 +39,7 @@
         font-size: 1rem;
         color: #555;
         margin-bottom: 2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .botones-accion {
@@ -44,16 +48,22 @@
         gap: 1rem;
     }
 
-    .btn-eliminar {
+    .btn-eliminar,
+    .btn-cancelar {
         padding: 0.75rem 1.5rem;
-        background-color: #dc3545;
-        color: #fff;
         font-size: 1rem;
         font-weight: bold;
-        border: none;
         border-radius: 8px;
+        color: #fff;
+        border: none;
         cursor: pointer;
+        display: inline-flex;
+        align-items: center;
         transition: background-color 0.3s ease;
+    }
+
+    .btn-eliminar {
+        background-color: #dc3545;
     }
 
         .btn-eliminar:hover {
@@ -61,15 +71,7 @@
         }
 
     .btn-cancelar {
-        padding: 0.75rem 1.5rem;
         background-color: #6c757d;
-        color: #fff;
-        font-size: 1rem;
-        font-weight: bold;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
     }
 
         .btn-cancelar:hover {

@@ -3,78 +3,128 @@
 <PageTitle>GestionTareas</PageTitle>
 
 <div class="layout">
+    <header class="top-bar">
+        <h2><i class="bi bi-kanban-fill"></i> GestionTareas</h2>
+    </header>
+
     <main class="body-content">
         @Body
     </main>
 
     <footer class="bottom-nav">
-        <NavLink class="nav-link" href="/usuarios">
-            <i class="bi bi-people-fill icono-nav"></i><span>Usuarios</span>
+        <NavLink class="nav-link" href="/usuarios" Match="NavLinkMatch.Prefix">
+            <i class="bi bi-people-fill icono-nav"></i>
+            <span>Usuarios</span>
         </NavLink>
 
         <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
-            <i class="bi bi-check2-square icono-nav"></i><span>Tareas</span>
+            <i class="bi bi-check2-square icono-nav"></i>
+            <span>Tareas</span>
         </NavLink>
 
-        <NavLink class="nav-link" href="/proyectos">
-            <i class="bi bi-check2-square"></i><span>Proyectos</span>
+        <NavLink class="nav-link" href="/proyectos" Match="NavLinkMatch.Prefix">
+            <i class="bi bi-folder-fill icono-nav"></i>
+            <span>Proyectos</span>
         </NavLink>
 
         <NavLink class="nav-link" href="https://github.com/Jimmy22-22/GestionTareas.git" target="_blank">
-            <i class="fab fa-github icono-nav"></i><span>GitHub</span>
+            <i class="fab fa-github icono-nav"></i>
+            <span>GitHub</span>
         </NavLink>
     </footer>
 </div>
 
 <style>
+    :root {
+        --fondo-oscuro: #121212;
+        --panel-claro: #1f1f1f;
+        --acento-violeta: #7c4dff;
+        --texto: #eeeeee;
+    }
+
     .layout {
         display: flex;
         flex-direction: column;
         height: 100vh;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #e8f5e9;
+        background-color: var(--fondo-oscuro);
+        color: var(--texto);
     }
+
+    .top-bar {
+        background-color: #000000;
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    }
+
+        .top-bar h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
 
     .body-content {
         flex-grow: 1;
         padding: 2rem;
-        overflow-y: auto;
-        background-color: #ffffff;
-        border-radius: 15px;
         margin: 1rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+        background-color: var(--panel-claro);
+        border-radius: 12px;
+        overflow-y: auto;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
     }
 
     .bottom-nav {
         display: flex;
         justify-content: space-around;
-        background-color: #4caf50;
-        padding: 10px 0;
-        border-top: 2px solid #388e3c;
+        background-color: #000000;
+        padding: 0.75rem 0;
+        border-top: 1px solid #333;
     }
 
-    .bottom-nav .nav-link {
-        color: #f1f8e9;
-        text-decoration: none;
-        text-align: center;
-        font-size: 0.95rem;
-        transition: color 0.3s ease, box-shadow 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0.5rem;
-        border-radius: 8px;
+        .bottom-nav .nav-link {
+            color: #bbbbbb;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 10px;
+        }
+
+            .bottom-nav .nav-link:hover,
+            .bottom-nav .nav-link.active {
+                color: var(--acento-violeta);
+                background-color: rgba(124, 77, 255, 0.1);
+                box-shadow: 0 4px 10px rgba(124, 77, 255, 0.4);
+            }
+
+            .bottom-nav .nav-link i.icono-nav {
+                font-size: 1.5rem;
+                margin-bottom: 4px;
+            }
+
+    @@media (max-width: 768px) {
+        .body-content
+
+    {
+        padding: 1rem;
     }
 
-    .bottom-nav .nav-link:hover,
-    .bottom-nav .nav-link.active {
-        color: #c8e6c9; 
-        box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+    .bottom-nav {
+        font-size: 0.85rem;
     }
 
-    .bottom-nav .nav-link i.icono-nav {
-        font-size: 1.5rem;
-        margin-bottom: 4px;
-    }
+        .bottom-nav .nav-link i.icono-nav {
+            font-size: 1.3rem;
+        }
+
     }
 </style>

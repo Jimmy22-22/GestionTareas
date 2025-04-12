@@ -3,31 +3,33 @@
 @inject UsuarioService UsuarioService
 @inject NavigationManager Navigation
 
-<h3><i class="bi bi-plus-circle-fill"></i> Nuevo Proyecto</h3>
+<h3 class="titulo-formulario">
+    <i class="bi bi-plus-circle-fill icono-titulo"></i> Nuevo Proyecto
+</h3>
 
-<EditForm Model="nuevoProyecto" OnValidSubmit="CrearProyecto">
+<EditForm Model="nuevoProyecto" OnValidSubmit="CrearProyecto" class="formulario-nuevo-proyecto">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
     <div class="form-group">
-        <label>Nombre:</label>
-        <InputText class="form-control" @bind-Value="nuevoProyecto.Nombre" />
+        <label class="etiqueta">Nombre:</label>
+        <InputText class="input-text form-control" @bind-Value="nuevoProyecto.Nombre" placeholder="Nombre del proyecto..." />
     </div>
     <div class="form-group">
-        <label>Descripción:</label>
-        <InputText class="form-control" @bind-Value="nuevoProyecto.Descripcion" />
+        <label class="etiqueta">Descripción:</label>
+        <InputText class="input-text form-control" @bind-Value="nuevoProyecto.Descripcion" placeholder="Descripción breve..." />
     </div>
     <div class="form-group">
-        <label>Fecha de Inicio:</label>
-        <InputDate class="form-control" @bind-Value="nuevoProyecto.FechaInicio" TValue="DateTime" />
+        <label class="etiqueta">Fecha de Inicio:</label>
+        <InputDate class="input-date form-control" @bind-Value="nuevoProyecto.FechaInicio" TValue="DateTime" />
     </div>
     <div class="form-group">
-        <label>Fecha de Fin:</label>
-        <InputDate class="form-control" @bind-Value="nuevoProyecto.FechaFin" TValue="DateTime?" />
+        <label class="etiqueta">Fecha de Fin:</label>
+        <InputDate class="input-date form-control" @bind-Value="nuevoProyecto.FechaFin" TValue="DateTime?" />
     </div>
     <div class="form-group">
-        <label>Responsable:</label>
-        <InputSelect class="form-select" @bind-Value="nuevoProyecto.UsuarioId" TValue="int?">
+        <label class="etiqueta">Responsable:</label>
+        <InputSelect class="input-select form-select" @bind-Value="nuevoProyecto.UsuarioId" TValue="int?">
             <option value="">-- Seleccionar usuario --</option>
             @foreach (var u in usuarios)
             {
@@ -36,8 +38,86 @@
         </InputSelect>
     </div>
 
-    <button class="btn btn-success mt-3"><i class="bi bi-check-circle"></i> Crear</button>
+    <button class="btn-crear mt-4" type="submit">
+        <i class="bi bi-check-circle icono-boton"></i> Crear Proyecto
+    </button>
 </EditForm>
+
+<style>
+    .formulario-nuevo-proyecto {
+        max-width: 550px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #1e1e1e;
+        border-radius: 14px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .titulo-formulario {
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #f1f1f1;
+        margin-bottom: 1.5rem;
+    }
+
+    .icono-titulo {
+        color: #6c63ff;
+        margin-right: 0.5rem;
+    }
+
+    .etiqueta {
+        font-size: 0.95rem;
+        color: #ccc;
+        margin-bottom: 0.4rem;
+        display: block;
+    }
+
+    .input-text,
+    .input-date,
+    .input-select {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #2a2a2a;
+        color: #fff;
+        border: 1px solid #444;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+        .input-text:focus,
+        .input-date:focus,
+        .input-select:focus {
+            border-color: #6c63ff;
+            background-color: #333;
+            outline: none;
+        }
+
+    .btn-crear {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #6c63ff;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-crear:hover {
+            background-color: #574fd6;
+            transform: scale(1.02);
+        }
+
+    .icono-boton {
+        margin-right: 0.5rem;
+    }
+</style>
 
 @code {
     private Proyecto nuevoProyecto = new();

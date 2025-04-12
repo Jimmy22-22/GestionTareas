@@ -3,7 +3,7 @@
 @inject NavigationManager Navigation
 
 <h3 class="titulo-formulario">
-    <i class="bi bi-plus-circle-fill icono-titulo"></i> Nuevo Usuario
+    <i class="bi bi-person-plus-fill icono-titulo"></i> Crear Usuario
 </h3>
 
 <EditForm Model="nuevoUsuario" OnValidSubmit="CrearUsuario" class="formulario-nueva-entidad">
@@ -12,15 +12,16 @@
 
     <div class="form-group">
         <label class="etiqueta">Nombre:</label>
-        <InputText class="input-text form-control" @bind-Value="nuevoUsuario.Nombre" placeholder="Escribe el nombre del usuario..." />
+        <InputText class="input-text form-control" @bind-Value="nuevoUsuario.Nombre" placeholder="Nombre del usuario..." />
     </div>
+
     <div class="form-group">
         <label class="etiqueta">Correo:</label>
-        <InputText class="input-text form-control" @bind-Value="nuevoUsuario.Correo" placeholder="Escribe el correo del usuario..." />
+        <InputText class="input-text form-control" @bind-Value="nuevoUsuario.Correo" placeholder="Correo del usuario..." />
     </div>
 
     <button class="btn-crear mt-3" type="submit">
-        <i class="bi bi-check-circle-fill icono-boton"></i> Crear Usuario
+        <i class="bi bi-person-check-fill icono-boton"></i> Guardar Usuario
     </button>
 </EditForm>
 
@@ -29,61 +30,65 @@
         max-width: 500px;
         margin: 0 auto;
         padding: 2rem;
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #1e1e1e;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        font-family: 'Segoe UI', sans-serif;
+        color: #f0f0f0;
     }
 
     .titulo-formulario {
         text-align: center;
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #333;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: #eeeeee;
         margin-bottom: 1.5rem;
     }
 
     .icono-titulo {
-        color: #4caf50;
-        margin-right: 0.5rem;
+        color: #7c4dff;
+        margin-right: 0.6rem;
     }
 
     .etiqueta {
-        font-size: 0.9rem;
-        color: #555;
-        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        color: #ccc;
+        margin-bottom: 0.4rem;
         display: block;
     }
 
     .input-text {
         width: 100%;
         padding: 0.75rem;
-        border: 1px solid #ddd;
+        background-color: #2a2a2a;
+        color: #f0f0f0;
+        border: 1px solid #444;
         border-radius: 8px;
         font-size: 0.9rem;
         transition: border-color 0.3s ease;
     }
 
         .input-text:focus {
-            border-color: #4caf50;
+            border-color: #7c4dff;
             outline: none;
         }
 
     .btn-crear {
         width: 100%;
-        padding: 0.75rem;
-        background-color: #4caf50;
-        color: #fff;
+        padding: 0.8rem;
+        background-color: #7c4dff;
+        color: white;
         font-size: 1rem;
         font-weight: bold;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
         .btn-crear:hover {
-            background-color: #45a049;
+            background-color: #9575cd;
+            transform: scale(1.03);
         }
 
     .icono-boton {

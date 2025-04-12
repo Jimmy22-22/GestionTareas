@@ -6,7 +6,7 @@
     <i class="bi bi-trash3-fill icono-titulo"></i> Eliminar Usuario
 </h3>
 
-<p class="mensaje-confirmacion">¿Estás seguro que deseas eliminar este usuario?</p>
+<p class="mensaje-confirmacion">¿Estás seguro que deseas eliminar este usuario? Esta acción no se puede deshacer.</p>
 
 <div class="botones-accion">
     <button class="btn-eliminar me-2" @onclick="Eliminar">
@@ -21,43 +21,48 @@
 <style>
     .titulo-eliminar {
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         font-weight: bold;
-        color: #dc3545;
+        color: #ff6b6b;
         margin-bottom: 1.5rem;
+        font-family: 'Segoe UI', sans-serif;
     }
 
     .icono-titulo {
+        color: #ff6b6b;
         margin-right: 0.5rem;
     }
 
     .mensaje-confirmacion {
         text-align: center;
         font-size: 1rem;
-        color: #555;
+        color: #ccc;
         margin-bottom: 2rem;
+        font-family: 'Segoe UI', sans-serif;
     }
 
     .botones-accion {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         gap: 1rem;
     }
 
     .btn-eliminar {
         padding: 0.75rem 1.5rem;
-        background-color: #dc3545;
+        background-color: #e63946;
         color: #fff;
         font-size: 1rem;
         font-weight: bold;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     .btn-eliminar:hover {
-        background-color: #c82333;
+        background-color: #d62828;
+        transform: scale(1.05);
     }
 
     .btn-cancelar {
@@ -67,13 +72,14 @@
         font-size: 1rem;
         font-weight: bold;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     .btn-cancelar:hover {
-        background-color: #5a6268;
+        background-color: #495057;
+        transform: scale(1.05);
     }
 
     .icono-boton {
